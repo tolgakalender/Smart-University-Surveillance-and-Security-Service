@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+//Options for the GRPC
+option java_multiple_files = true;
+option java_package = "com.example.temperaturecontrolservice";
+option java_outer_classname = "TemperatureControlServiceProto";
+
+package temperaturecontrolservice;
+
+//Options for the GRPC
+//Service Definition
+service TemperatureControlService {
+    rpc SetTemperature(SetTemperatureRequest) returns (SetTemperatureResponse);
+    rpc GetTemperature(GetTemperatureRequest) returns (GetTemperatureResponse);
+}
+
+//Define the messages
+message SetTemperatureRequest {
+    string area_id = 1;
+    double temperature = 2;
+}
+
+message SetTemperatureResponse {
+    string message = 1;
+}
+
+message GetTemperatureRequest {
+    string area_id = 1;
+}
+
+message GetTemperatureResponse {
+    double temperature = 1;
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+//Options for the GRPC
+option java_multiple_files = true;
+option java_package = "com.example.smartsurveillancesecurityservice";
+option java_outer_classname = "SecurityCameraServiceProto";
+
+package securitycameraservice;
+
+//Service Definition
+service SecurityCameraService {
+  rpc StartCamera(CameraRequest) returns (CameraResponse);
+  rpc StopCamera(CameraRequest) returns (CameraResponse);
+}
+
+//Define the messages
+message CameraRequest {
+  string camera_id = 1;
+}
+
+message CameraResponse {
+  string camera_id = 1;
+  bool success = 2;
+  string message = 3;
+}
